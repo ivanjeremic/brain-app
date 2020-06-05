@@ -1,209 +1,167 @@
-import Head from 'next/head'
+import React, { useState } from "react";
+import Router from "next/router";
+import Head from "next/head";
+import ImageMapper from "react-image-mapper";
+import Particles from "react-particles-js";
+import AppBarTop from "../components/AppBar";
+import { CenterArea } from "../components/MapAreas/CenterArea";
+
+/* import wave from "../public/wave.png"; */
 
 export default function Home() {
+  const [topTitle, setTopTitle] = useState("Willkommen");
+
+  const navigateToNews = () => {
+    Router.push("/news");
+  };
+
+  const areaEnterHandler = () => {
+    setTopTitle("Hure");
+  };
+  const areaLeaveHandler = () => {
+    setTopTitle("Willkommen");
+  };
+
   return (
     <div className="container">
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
+        <script src="https://cdn.rawgit.com/progers/pathseg/master/pathseg.js" />
       </Head>
 
       <main>
-        <h1 className="title">
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className="description">
-          Get started by editing <code>pages/index.js</code>
-        </p>
-
-        <div className="grid">
-          <a href="https://nextjs.org/docs" className="card">
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className="card">
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/zeit/next.js/tree/master/examples"
-            className="card"
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="card"
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
+        <section>
+          <AppBarTop topTitle={topTitle} />
+          <Particles
+            height="100vh"
+            width="100vw"
+            params={{
+              particles: {
+                number: {
+                  value: 180
+                },
+                size: {
+                  value: 4
+                }
+              },
+              interactivity: {
+                events: {
+                  onhover: {
+                    enable: true,
+                    mode: "repulse"
+                  }
+                }
+              }
+            }}
+          />
+          <div className="centered">
+            <ImageMapper
+              src="Brain.png"
+              map={CenterArea}
+              lineWidth="0"
+              strokeColor="transparent"
+              onClick={navigateToNews}
+              onMouseEnter={areaEnterHandler}
+              onMouseLeave={areaLeaveHandler}
+            />
+          </div>
+          <div className="wave wave1"></div>
+          <div className="wave wave2"></div>
+          <div className="wave wave3"></div>
+          <div className="wave wave4"></div>
+        </section>
       </main>
 
-      <footer>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className="logo" />
-        </a>
-      </footer>
-
-      <style jsx>{`
-        .container {
-          min-height: 100vh;
-          padding: 0 0.5rem;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        }
-
-        main {
-          padding: 5rem 0;
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        }
-
-        footer {
-          width: 100%;
-          height: 100px;
-          border-top: 1px solid #eaeaea;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-
-        footer img {
-          margin-left: 0.5rem;
-        }
-
-        footer a {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-
-        a {
-          color: inherit;
-          text-decoration: none;
-        }
-
-        .title a {
-          color: #0070f3;
-          text-decoration: none;
-        }
-
-        .title a:hover,
-        .title a:focus,
-        .title a:active {
-          text-decoration: underline;
-        }
-
-        .title {
-          margin: 0;
-          line-height: 1.15;
-          font-size: 4rem;
-        }
-
-        .title,
-        .description {
-          text-align: center;
-        }
-
-        .description {
-          line-height: 1.5;
-          font-size: 1.5rem;
-        }
-
-        code {
-          background: #fafafa;
-          border-radius: 5px;
-          padding: 0.75rem;
-          font-size: 1.1rem;
-          font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-            DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
-        }
-
-        .grid {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-wrap: wrap;
-
-          max-width: 800px;
-          margin-top: 3rem;
-        }
-
-        .card {
-          margin: 1rem;
-          flex-basis: 45%;
-          padding: 1.5rem;
-          text-align: left;
-          color: inherit;
-          text-decoration: none;
-          border: 1px solid #eaeaea;
-          border-radius: 10px;
-          transition: color 0.15s ease, border-color 0.15s ease;
-        }
-
-        .card:hover,
-        .card:focus,
-        .card:active {
-          color: #0070f3;
-          border-color: #0070f3;
-        }
-
-        .card h3 {
-          margin: 0 0 1rem 0;
-          font-size: 1.5rem;
-        }
-
-        .card p {
-          margin: 0;
-          font-size: 1.25rem;
-          line-height: 1.5;
-        }
-
-        .logo {
-          height: 1em;
-        }
-
-        @media (max-width: 600px) {
-          .grid {
-            width: 100%;
-            flex-direction: column;
+      <style jsx>
+        {`
+          .centered {
+            width: 60%;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            /* bring your own prefixes */
+            transform: translate(-50%, -50%);
           }
-        }
-      `}</style>
+          section {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            background: #1c1c7e;
+            overflow: hidden;
+          }
+          section .wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: url(wave.png);
+            background-size: 1000px 100px;
+          }
+          section .wave.wave1 {
+            animation: animate 30s linear infinite;
+            z-index: 1000px;
+            opacity: 1;
+            animation-delay: 0s;
+            bottom: 0;
+          }
+          section .wave.wave2 {
+            animation: animate2 15s linear infinite;
+            z-index: 999px;
+            opacity: 0.5;
+            animation-delay: -5s;
+            bottom: 10px;
+          }
+          section .wave.wave3 {
+            animation: animate 30s linear infinite;
+            z-index: 998px;
+            opacity: 0.2;
+            animation-delay: -5s;
+            bottom: 10px;
+          }
+          section .wave.wave4 {
+            animation: animate2 2s linear infinite;
+            z-index: 997px;
+            opacity: 0.7;
+            animation-delay: -5s;
+            bottom: 20px;
+          }
+          @keyframes animate {
+            0% {
+              background-position-x: 0;
+            }
+            100% {
+              background-position-x: 1000px;
+            }
+          }
+          @keyframes animate2 {
+            0% {
+              background-position-x: 0;
+            }
+            100% {
+              background-position-x: -1000px;
+            }
+          }
+        `}
+      </style>
 
-      <style jsx global>{`
-        html,
-        body {
-          padding: 0;
-          margin: 0;
-          font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-            Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
-            sans-serif;
-        }
+      <style jsx global>
+        {`
+          html,
+          body {
+            padding: 0;
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+              Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
+              sans-serif;
+          }
 
-        * {
-          box-sizing: border-box;
-        }
-      `}</style>
+          * {
+            box-sizing: border-box;
+          }
+        `}
+      </style>
     </div>
-  )
+  );
 }

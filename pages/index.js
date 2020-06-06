@@ -1,147 +1,60 @@
 import React, { useState } from "react";
 import Router from "next/router";
-import Head from "next/head";
+import { useSpring, animated } from "react-spring";
+import Container from "@material-ui/core/Container";
 import ImageMapper from "react-image-mapper";
-import Particles from "react-particles-js";
-import AppBarTop from "../components/AppBar";
-import { CenterArea } from "../components/MapAreas/CenterArea";
+import { CenterArea, UeberUnsArea } from "../MapAreas/CenterArea";
+import Wave from "../components/Wave";
+import { useAppState } from "../context/StateContext";
 
 /* import wave from "../public/wave.png"; */
+const calc = (x, y) => [
+  -(y - window.innerHeight / 2) / 20,
+  (x - window.innerWidth / 2) / 20,
+  1.1
+];
+const trans = (x, y, s) =>
+  `perspective(600px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`;
 
-export default function Home() {
-  const [topTitle, setTopTitle] = useState("Willkommen");
+export default function Homes() {
+  const { areaEnterHandler, areaLeaveHandler } = useAppState();
+  const [props, set] = useSpring(() => ({
+    xys: [0, 0, 1],
+    config: { mass: 5, tension: 35, friction: 40 }
+  }));
 
   const navigateToNews = () => {
     Router.push("/news");
   };
 
-  const areaEnterHandler = () => {
-    setTopTitle("Hure");
-  };
-  const areaLeaveHandler = () => {
-    setTopTitle("Willkommen");
-  };
-
   return (
-    <div className="container">
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-        <script src="https://cdn.rawgit.com/progers/pathseg/master/pathseg.js" />
-      </Head>
-
-      <main>
-        <section>
-          <AppBarTop topTitle={topTitle} />
-          <Particles
-            height="100vh"
-            width="100vw"
-            params={{
-              particles: {
-                number: {
-                  value: 180
-                },
-                size: {
-                  value: 4
-                }
-              },
-              interactivity: {
-                events: {
-                  onhover: {
-                    enable: true,
-                    mode: "repulse"
-                  }
-                }
-              }
-            }}
+    <>
+      <div className="centered">
+        <animated.div
+          className="card"
+          onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
+          onMouseLeave={() => set({ xys: [0, 0, 1] })}
+          style={{ transform: props.xys.interpolate(trans) }}
+        >
+          <ImageMapper
+            src="Brain.png"
+            map={CenterArea}
+            lineWidth="0"
+            strokeColor="transparent"
+            onClick={navigateToNews}
+            onMouseEnter={areaEnterHandler}
+            onMouseLeave={areaLeaveHandler}
           />
-          <div className="centered">
-            <ImageMapper
-              src="Brain.png"
-              map={CenterArea}
-              lineWidth="0"
-              strokeColor="transparent"
-              onClick={navigateToNews}
-              onMouseEnter={areaEnterHandler}
-              onMouseLeave={areaLeaveHandler}
-            />
-          </div>
-          <div className="wave wave1"></div>
-          <div className="wave wave2"></div>
-          <div className="wave wave3"></div>
-          <div className="wave wave4"></div>
-        </section>
-      </main>
-
+        </animated.div>
+      </div>
       <style jsx>
         {`
           .centered {
-            width: 60%;
             position: fixed;
             top: 50%;
             left: 50%;
             /* bring your own prefixes */
             transform: translate(-50%, -50%);
-          }
-          section {
-            position: relative;
-            width: 100%;
-            height: 100vh;
-            background: #1c1c7e;
-            overflow: hidden;
-          }
-          section .wave {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 100px;
-            background: url(wave.png);
-            background-size: 1000px 100px;
-          }
-          section .wave.wave1 {
-            animation: animate 30s linear infinite;
-            z-index: 1000px;
-            opacity: 1;
-            animation-delay: 0s;
-            bottom: 0;
-          }
-          section .wave.wave2 {
-            animation: animate2 15s linear infinite;
-            z-index: 999px;
-            opacity: 0.5;
-            animation-delay: -5s;
-            bottom: 10px;
-          }
-          section .wave.wave3 {
-            animation: animate 30s linear infinite;
-            z-index: 998px;
-            opacity: 0.2;
-            animation-delay: -5s;
-            bottom: 10px;
-          }
-          section .wave.wave4 {
-            animation: animate2 2s linear infinite;
-            z-index: 997px;
-            opacity: 0.7;
-            animation-delay: -5s;
-            bottom: 20px;
-          }
-          @keyframes animate {
-            0% {
-              background-position-x: 0;
-            }
-            100% {
-              background-position-x: 1000px;
-            }
-          }
-          @keyframes animate2 {
-            0% {
-              background-position-x: 0;
-            }
-            100% {
-              background-position-x: -1000px;
-            }
           }
         `}
       </style>
@@ -162,6 +75,6 @@ export default function Home() {
           }
         `}
       </style>
-    </div>
+    </>
   );
 }

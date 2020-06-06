@@ -1097,6 +1097,52 @@
   resolved "https://registry.yarnpkg.com/@next/react-refresh-utils/-/react-refresh-utils-9.4.4.tgz#d94cbb3b354a07f1f5b80e554d6b9e34aba99e41"
   integrity sha512-9nKENeWRI6kQk44TbeqleIVtNLfcS3klVUepzl/ZCqzR5Bi06uqBCD277hdVvG/wL1pxA+R/pgJQLqnF5E2wPQ==
 
+"@react-spring/animated@9.0.0-canary.808.8.4a87fcb":
+  version "9.0.0-canary.808.8.4a87fcb"
+  resolved "https://registry.yarnpkg.com/@react-spring/animated/-/animated-9.0.0-canary.808.8.4a87fcb.tgz#b664ebb4afb263e5a942b48a81a615f92129fbb7"
+  integrity sha512-btqfvXlqpRbYVJ1X9c2LCaLKxBMdCEH/nH+RIoR9bhd1/64xNDb5nw+FDuJLLq9gY/fMzt1914kYU8RqolpMSg==
+  dependencies:
+    "@babel/runtime" "^7.3.1"
+    "@react-spring/shared" "9.0.0-canary.808.8.4a87fcb"
+
+"@react-spring/core@9.0.0-canary.808.8.4a87fcb":
+  version "9.0.0-canary.808.8.4a87fcb"
+  resolved "https://registry.yarnpkg.com/@react-spring/core/-/core-9.0.0-canary.808.8.4a87fcb.tgz#bae726aa6f6a08015a5d3977dff1d6b96b32e153"
+  integrity sha512-qaEBkn0Ox3hL+H79N0Nrqsq1sdRathxvAUSzfItwWPcb+iVDvZFT9XHpVDyuGuCs+osschfPB2zMhbXr4NdqYQ==
+  dependencies:
+    "@babel/runtime" "^7.3.1"
+    "@react-spring/animated" "9.0.0-canary.808.8.4a87fcb"
+    "@react-spring/shared" "9.0.0-canary.808.8.4a87fcb"
+    use-memo-one "^1.1.0"
+
+"@react-spring/parallax@9.0.0-canary.808.8.4a87fcb":
+  version "9.0.0-canary.808.8.4a87fcb"
+  resolved "https://registry.yarnpkg.com/@react-spring/parallax/-/parallax-9.0.0-canary.808.8.4a87fcb.tgz#64c52cb8893b4ffd6098dc29d24b8f7d6d024b73"
+  integrity sha512-0s0tRead7YLk60BWH1jGw11YQuMeFk6NieSaspak2M0+Uez62mb9ZfJrROrR6myYolDhXtYELQ+qhucNf3bKPw==
+  dependencies:
+    "@babel/runtime" "^7.3.1"
+    "@react-spring/shared" "9.0.0-canary.808.8.4a87fcb"
+    "@react-spring/web" "9.0.0-canary.808.8.4a87fcb"
+    use-memo-one "^1.1.0"
+
+"@react-spring/shared@9.0.0-canary.808.8.4a87fcb":
+  version "9.0.0-canary.808.8.4a87fcb"
+  resolved "https://registry.yarnpkg.com/@react-spring/shared/-/shared-9.0.0-canary.808.8.4a87fcb.tgz#4d94a34a8ddf5f263466c5eebef04621b6846624"
+  integrity sha512-mMROW57OcLKtLacyeOGqGxSHtxIxVkesQrAyfnkHs5/oWYTHo6rJ9KLIDYJDrEK4LmKk4nBLxLrh2VA1n9MDMQ==
+  dependencies:
+    "@babel/runtime" "^7.3.1"
+    fluids "^0.1.0"
+
+"@react-spring/web@9.0.0-canary.808.8.4a87fcb":
+  version "9.0.0-canary.808.8.4a87fcb"
+  resolved "https://registry.yarnpkg.com/@react-spring/web/-/web-9.0.0-canary.808.8.4a87fcb.tgz#6e39d9d46430f5b0c6c3db60a3b24da5837f32f2"
+  integrity sha512-RG4VQpCOZ+mTe6E6q0q3Wwk0aqxn2sCBLxpbQTmCoGraQYeTTuM0FEN9FZN2E3ni7gIb8Es+udZzrpZFKOJGEg==
+  dependencies:
+    "@babel/runtime" "^7.3.1"
+    "@react-spring/animated" "9.0.0-canary.808.8.4a87fcb"
+    "@react-spring/core" "9.0.0-canary.808.8.4a87fcb"
+    "@react-spring/shared" "9.0.0-canary.808.8.4a87fcb"
+
 "@types/color-name@^1.1.1":
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/@types/color-name/-/color-name-1.1.1.tgz#1c1261bbeaa10a8055bbc5d8ab84b7b2afc846a0"
@@ -2754,6 +2800,11 @@ find-up@^4.0.0:
   dependencies:
     locate-path "^5.0.0"
     path-exists "^4.0.0"
+
+fluids@^0.1.0:
+  version "0.1.8"
+  resolved "https://registry.yarnpkg.com/fluids/-/fluids-0.1.8.tgz#0a708b4f917f96ed9453dc21ab167d4bae9877c3"
+  integrity sha512-tl3nUHkZeqCJs6FnlN4hTLmOzwDNXWqRbTIXGOkUT6HUAAuWsd28CyxwLOy9KAIbJNY2Bgn2C2gZVRiEhdCtBg==
 
 flush-write-stream@^1.0.0:
   version "1.1.1"
@@ -4614,7 +4665,7 @@ prop-types-exact@1.2.0:
     object.assign "^4.1.0"
     reflect.ownkeys "^0.2.0"
 
-prop-types@15.7.2, prop-types@^15.6.0, prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@15.7.2, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -4760,6 +4811,14 @@ react-refresh@0.8.3:
   version "0.8.3"
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.8.3.tgz#721d4657672d400c5e3c75d063c4a85fb2d5d68f"
   integrity sha512-X8jZHc7nCMjaCqoU+V2I0cOhNW+QMBwSUkeXnTi8IPe6zaRWfn60ZzvFDZqWPfmSJfjub7dDW1SP0jaHWLu/hg==
+
+react-spring@^8.0.27:
+  version "8.0.27"
+  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-8.0.27.tgz#97d4dee677f41e0b2adcb696f3839680a3aa356a"
+  integrity sha512-nDpWBe3ZVezukNRandTeLSPcwwTMjNVu1IDq9qA/AMiUqHuRN4BeSWvKr3eIxxg1vtiYiOLy4FqdfCP5IoP77g==
+  dependencies:
+    "@babel/runtime" "^7.3.1"
+    prop-types "^15.5.8"
 
 react-transition-group@^4.4.0:
   version "4.4.1"
@@ -5703,6 +5762,11 @@ url@^0.11.0:
   dependencies:
     punycode "1.3.2"
     querystring "0.2.0"
+
+use-memo-one@^1.1.0:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/use-memo-one/-/use-memo-one-1.1.1.tgz#39e6f08fe27e422a7d7b234b5f9056af313bd22c"
+  integrity sha512-oFfsyun+bP7RX8X2AskHNTxu+R3QdE/RC5IefMbqptmACAA/gfol1KDD5KRzPsGMa62sWxGZw+Ui43u6x4ddoQ==
 
 use-subscription@1.4.1:
   version "1.4.1"

@@ -10,12 +10,14 @@
   "dependencies": {
     "@material-ui/core": "^4.10.1",
     "@material-ui/icons": "^4.9.1",
+    "@react-spring/parallax": "9.0.0-canary.808.8.4a87fcb",
     "clsx": "^1.1.1",
     "next": "9.4.4",
     "prop-types": "^15.7.2",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-image-mapper": "^0.0.15",
-    "react-particles-js": "^3.2.1"
+    "react-particles-js": "^3.2.1",
+    "react-spring": "^8.0.27"
   }
 }

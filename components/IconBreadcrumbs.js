@@ -31,7 +31,7 @@ function handleClick() {
 
 export default function IconBreadcrumbs({ topTitle }) {
   const classes = useStyles();
-  const { startseite, news } = useAppState();
+  const { startseite } = useAppState();
 
   return (
     <Breadcrumbs aria-label="breadcrumb">
@@ -42,14 +42,9 @@ export default function IconBreadcrumbs({ topTitle }) {
         </Link>
       </AniClick>
       <AniClick>
-        <Link
-          color="inherit"
-          onClick={handleClick}
-          style={news === "" ? { display: "none" } : null}
-          className={classes.link}
-        >
+        <Link color="inherit" onClick={handleClick} className={classes.link}>
           <WhatshotIcon className={classes.icon} />
-          {news}
+          News
         </Link>
       </AniClick>
     </Breadcrumbs>

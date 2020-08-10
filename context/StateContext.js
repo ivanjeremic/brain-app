@@ -11,7 +11,32 @@ const StateContext = createContext({});
 
 const initialState = {
   startseite: "Willkommen",
-  news: ""
+  news: [
+    {
+      title: "News1",
+      content: "Lorem ipsum bre"
+    },
+    {
+      title: "News2",
+      content: "Lorem ipsum bre"
+    },
+    {
+      title: "News3",
+      content: "Lorem ipsum bre"
+    },
+    {
+      title: "News4",
+      content: "Lorem ipsum bre"
+    },
+    {
+      title: "News5",
+      content: "Lorem ipsum bre"
+    },
+    {
+      title: "News6",
+      content: "Lorem ipsum bre"
+    }
+  ]
 };
 
 function reducer(state, action) {
@@ -19,14 +44,12 @@ function reducer(state, action) {
     case "AREA_ENTER":
       return {
         ...state,
-        startseite: "Startseite",
-        news: "News"
+        startseite: "Startseite"
       };
     case "AREA_LEAVE":
       return {
         ...state,
-        startseite: "Startseite",
-        news: ""
+        startseite: "Startseite"
       };
     default:
       return state;

@@ -1,8 +1,8 @@
-import React from "react";
-import Head from "next/head";
-import Particles from "react-particles-js";
-import AppBarTop from "./AppBar";
-import Wave from "./Wave";
+import React from 'react';
+import Head from 'next/head';
+import Particles from 'react-particles-js';
+import AppBarTop from './AppBar';
+import Wave from './Wave';
 
 export default function Layout(props) {
   const { children } = props;
@@ -11,13 +11,13 @@ export default function Layout(props) {
     <>
       <Head>
         <title>HirnKunst</title>
-        <link rel="icon" href="/favicon.ico" />
-        <script src="https://cdn.rawgit.com/progers/pathseg/master/pathseg.js" />
+        <link rel='icon' href='/favicon.ico' />
+        <script src='https://cdn.rawgit.com/progers/pathseg/master/pathseg.js' />
       </Head>
       <main>
         <section>
           <AppBarTop />
-          <Particles
+          {/* <Particles
             height="100vh"
             width="100vw"
             params={{
@@ -38,7 +38,7 @@ export default function Layout(props) {
                 }
               }
             }}
-          />
+          /> */}
           {children}
           <Wave />
         </section>
